@@ -1,22 +1,100 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
+import { ClientRouter } from 'astro:transitions';  
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title: string;
+  titlepage: string;
+}
+
+const { title, titlepage } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+		<ClientRouter />  
+
+  </head>
+  <body>
+    <div class="grid-container">
+      <!-- Panel izquierdo -->
+      <aside class="container container-profile" transition:persist>
+        <img
+          src="/pp3.png"
+          alt="Avatar"
+          class="profile-img"
+        />
+        <h2 class="name">Gerardo Mecott</h2>
+        <p class="job-title">Web Developer</p>
+        
+        <div class="contact-section">
+          <ul class="contact-list">
+            <li><i class="fas fa-envelope"></i> gerardomecott@outlook.com</li>
+            <li><i class="fas fa-phone"></i> +52 999 391 7172</li>
+            <li><i class="fas fa-birthday-cake"></i> 12 de Junio 2004</li>
+            <li><i class="fas fa-map-marker-alt"></i> Mérida, México</li>
+            <li><i class="fas fa-language"></i>Ingles - B2</li>
+          </ul>
+        </div>
+
+        <div class="skills-section">
+          <h3 class="section-title">Habilidades</h3>
+          <ul class="skills-list">
+            <li>
+              <img class="skill-icon" src="https://th.bing.com/th/id/R.9228f542564a699b423ed11b590a6254?rik=jcOgHzzbkzxhqA&pid=ImgRaw&r=0" alt="HTML/CSS/JS"/>
+              <span>HTML - CSS - JS</span>
+            </li>
+            <li>
+              <img class="skill-icon" src="https://www.pngall.com/wp-content/uploads/15/React-Logo-PNG-Images.png" alt="React"/>
+              <span>React</span>
+            </li>
+            <li>
+              <img class="skill-icon" src="https://th.bing.com/th/id/R.03348ffdd9a7b0f59e337bce31bf1486?rik=PBDvX7IhldoZqQ&pid=ImgRaw&r=0" alt="NodeJS"/>
+              <span>NodeJS</span>
+            </li>
+            <li>
+              <img class="skill-icon" src="https://user-images.githubusercontent.com/59144946/276976456-4a5e1cbc-2d4e-439f-875b-8fb4bdc8c15e.png" alt="Astro"/>
+              <span>Astro</span>
+            </li>
+            <li>
+              <img class="skill-icon" src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_git-512.png" alt="Git"/>
+              <span>Git - GitHub</span>
+            </li>
+            <li>
+              <img class="skill-icon" src="https://th.bing.com/th/id/R.4ad80ebc8c85bde93f7a2a4748a29eb9?rik=t2Swt%2f6f4%2bLUxA&pid=ImgRaw&r=0" alt="SQL - NoSQL"/>
+              <span>SQL - NoSQL</span>
+            </li>
+            <li>
+              <img class="skill-icon" src="https://www.pngmart.com/files/23/Adobe-Logo-PNG-Photos.png" alt="Adobe"/>
+              <span>Adobe</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <section class="container container-info">
+        <header class="header-section">
+          <h1 class="page-title">{titlepage}</h1>
+          <nav class="nav-menu">
+            <a href="/" class={currentPath === "/" ? "nav-link active" : "nav-link"}>Sobre mi</a>
+            <a href="/Portafolio" class={currentPath === "/portafolio" ? "nav-link active" : "nav-link"}>Portafolio</a>
+            <a href="/Cursos" class={currentPath === "/cursos" ? "nav-link active" : "nav-link"}>Cursos</a>
+            <a href="/Contacto" class={currentPath === "/contacto" ? "nav-link active" : "nav-link"}>Contacto</a>
+          </nav>
+        </header>
+
+        <div class="content-area">
+          <slot />
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

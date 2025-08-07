@@ -1,11 +1,68 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Gerardo Mecott - Web Developer" titlepage="Resumen">
+  
+	  <section class="info-section">
+    <h3>Experiencia</h3>
+    <ul class="timeline-list">
+      <li class="timeline-item">
+        <div class="timeline-content">
+          <strong>Desarrollador Full-Stack Junior</strong>
+          <span class="date">2024 - Presente</span>
+          <p>Desarrollo de aplicaciones web con React y Next.js. Colaboración en proyectos de código abierto.</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-content">
+          <strong>Freelancer Web Developer</strong>
+          <span class="date">2024 - 2025</span>
+          <p>Desarrollo de sitios web personalizados para pequeñas empresas locales usando tecnologías modernas.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+	
+	<section class="info-section">
+    <h3>Educación</h3>
+    <ul class="timeline-list">
+      <li class="timeline-item">
+        <div class="timeline-content">
+          <strong>Instituto Tecnológico de Mérida</strong>
+          <span class="date">2022 - (2027)</span>
+          <p>Ingeniería en Sistemas Computacionales</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-content">
+          <strong>Preparatoria Estatal #8</strong>
+          <span class="date">2019 - 2022</span>
+          <p>Bachillerato General</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+
+
+  <section class="info-section">
+    <h3>Concursos</h3>
+    <ul class="timeline-list">
+      <li class="timeline-item">
+        <div class="timeline-content">
+          <strong>Hackathon 3.0</strong>
+          <span class="date">Abril 2025</span>
+          <p>Evento organizado por el Instituto Tecnológico de Mérida. Durante 36 horas creamos mi equipo y yo una solución a la empresa <strong>RODAI</strong>. La página para crear CV mediante IA <a href="#" class="link">Trazo</a>.</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-content">
+          <strong>Hackathon 2.0</strong>
+          <span class="date">Marzo 2024</span>
+          <p>Evento organizado por el Instituto Tecnológico de Mérida. Durante 36 horas creamos mi equipo y yo una solución a la empresa <strong>EJAD</strong>. Una app para hacer reportes mediante comandos de voz. <a href="#" class="link">EJAD</a>.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
 </Layout>
