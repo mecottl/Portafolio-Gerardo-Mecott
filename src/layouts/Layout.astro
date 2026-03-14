@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { ClientRouter } from 'astro:transitions';  
+// import { ClientRouter } from 'astro:transitions';  
 
 interface Props {
   title: string;
@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
   </head>
   <body>
     <div class="grid-container">
-      <aside class="container container-profile" transition:persist>
+      <aside class="container container-profile">
         <img
           src="/pp3.png"
           alt="Avatar"
@@ -48,12 +48,19 @@ const currentPath = Astro.url.pathname;
           <h3 class="section-title">Habilidades</h3>
           <ul class="skills-list">
             <li>
-              <img class="skill-icon" src="https://th.bing.com/th/id/R.9228f542564a699b423ed11b590a6254?rik=jcOgHzzbkzxhqA&pid=ImgRaw&r=0" alt="HTML/CSS/JS"/>
-              <span>HTML - CSS - JS</span>
+              <img class="skill-icon" src="https://th.bing.com/th/id/R.913b527bab01c106d04cb160a278a25a?rik=PJfdLza2L57W2Q&pid=ImgRaw&r=0" alt="HTML/CSS"/>
+              <span>HTML - CSS </span>
             </li>
+            <li>
+              <img class="skill-icon" src="https://tse4.mm.bing.net/th/id/OIP.hh6Vfc1Z7D7WwzhFA6M75AHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="JS/TS"/>
+              <span>JS - TS</span>
             <li>
               <img class="skill-icon" src="https://www.pngall.com/wp-content/uploads/15/React-Logo-PNG-Images.png" alt="React"/>
               <span>React</span>
+            </li>
+            <li>
+              <img class="skill-icon" src="https://miro.medium.com/v2/resize:fit:1400/1*Klh1l7wkoG6PDPb9A5oCHQ.png" alt="Angular"/>
+              <span>Angular</span>
             </li>
             <li>
               <img class="skill-icon" src="https://th.bing.com/th/id/R.03348ffdd9a7b0f59e337bce31bf1486?rik=PBDvX7IhldoZqQ&pid=ImgRaw&r=0" alt="NodeJS"/>
@@ -76,8 +83,8 @@ const currentPath = Astro.url.pathname;
               <span>Adobe</span>
             </li>
             <li>
-              <img class="skill-icon" src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3205024/logo-vercel-icon-md.png" alt="Adobe"/>
-              <span>Vercel</span>
+              <img class="skill-icon" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/vercel-icon.png" alt="Vercel"/>
+              <span>Vercel - Render - Netlify</span>
             </li>
           </ul>
         </div>
