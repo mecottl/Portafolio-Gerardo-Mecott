@@ -73,6 +73,6 @@ export const featuredRepos: FeaturedRepo[] = [
     description: "Creador de plantillas para mostrar tu identidad y compartirla en redes sociales.",
     image: "/projects/whoami.png",
     demoUrl: "https://whoami.vercel.app",
-    tech: ["NestJS, Prisma, Angular, PostgreSQL"],
+    tech: ["NestJS", "Prisma", "Angular", "PostgreSQL"],
   },
 ];

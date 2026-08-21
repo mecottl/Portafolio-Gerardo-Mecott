@@ -1,23 +1,19 @@
 export interface TimelineEntry {
   title: string;
   dateLabel: string;
-  /** Puede incluir HTML simple, ej: enlaces <a href="...">texto</a> */
   description: string;
 }
 
-// Para agregar experiencia, educación o un concurso nuevo, agrega un objeto al arreglo correspondiente.
-// No hace falta tocar index.astro.
-
 export const experience: TimelineEntry[] = [
   {
-    title: "Desarrollador Full-Stack Junior",
-    dateLabel: "2024 - Presente",
+    title: "Desarrollador Full-Stack Junior — PlenumSoft",
+    dateLabel: "2025 - 2027",
     description:
-      "Desarrollo de aplicaciones web con React y Next.js. Colaboración en proyectos de código abierto.",
+      "Curso mi último año de la carrera dentro de PlenumSoft, desarrollando aplicaciones web con todo tipo de frameworks y tecnologías, colaborando en proyectos reales como parte de mi formación profesional.",
   },
   {
     title: "Freelancer Web Developer",
-    dateLabel: "2024 - 2025",
+    dateLabel: "2024 - presente",
     description:
       "Desarrollo de sitios web personalizados para pequeñas empresas locales usando tecnologías modernas.",
   },
@@ -26,7 +22,7 @@ export const experience: TimelineEntry[] = [
 export const education: TimelineEntry[] = [
   {
     title: "Instituto Tecnológico de Mérida",
-    dateLabel: "2022 - (2027)",
+    dateLabel: "2022 - 2027",
     description: "Ingeniería en Sistemas Computacionales",
   },
   {
@@ -37,7 +33,7 @@ export const education: TimelineEntry[] = [
 ];
 
 export const bioSummary =
-  "Estudiante de último año de Ingeniería en Sistemas Computacionales, enfocado en el desarrollo web full-stack. Busco una oportunidad de residencia o prácticas para aplicar mis habilidades en tecnologías como React, Node.js y Next.js. Mi objetivo es contribuir al desarrollo de soluciones web eficientes y aprender del entorno profesional.";
+  "Estudiante de último año de Ingeniería en Sistemas Computacionales, cursando mi último año de carrera dentro de la empresa PlenumSoft, donde aplico mis habilidades en desarrollo web full-stack. Mi objetivo es seguir contribuyendo al desarrollo de soluciones web eficientes y aprender del entorno profesional.";
 
 export const hackathons: TimelineEntry[] = [
   {

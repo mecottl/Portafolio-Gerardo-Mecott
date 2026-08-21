@@ -132,36 +132,62 @@ html, body {
     letter-spacing: 1px;
 }
 
-.skills-list {
-    list-style: none;
-    width: 100%;
+.skill-categories {
     display: flex;
     flex-direction: column;
+    gap: 1.1rem;
+}
+
+.skill-category-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #00d4ff;
+    margin-bottom: 0.5rem;
+}
+
+.skill-group {
+    margin-bottom: 0.6rem;
+}
+
+.skill-group:last-child {
+    margin-bottom: 0;
+}
+
+.skill-group-label {
+    font-size: 0.8rem;
+    color: rgba(224, 230, 255, 0.55);
+    margin-bottom: 0.35rem;
+}
+
+.skill-icons-row {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
-.skills-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: 0.85rem;
-    background: rgba(0, 212, 255, 0.05);
-    border: 1px solid rgba(0, 212, 255, 0.1);
-}
-
-.skills-list li:hover {
-    background: rgba(0, 212, 255, 0.15);
-    transform: translateX(8px);
-}
-
 .skill-icon {
-    width: 18px;
-    height: 18px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
-    border-radius: 3px;
+    padding: 4px;
+    border-radius: 6px;
+    background: rgba(0, 212, 255, 0.06);
+    border: 1px solid rgba(0, 212, 255, 0.12);
+    transition: all 0.2s ease;
+}
+
+.skill-icon:hover {
+    background: rgba(0, 212, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+/* Algunos logos (GitHub, Vercel, Express, Prisma) son negros/oscuros por defecto
+   y no se ven en fondo oscuro; se invierten a blanco. */
+.skill-icon.invert {
+    filter: invert(1) brightness(1.6);
 }
 
 /* ========== PANEL CONTENIDO ========== */
@@ -822,9 +848,9 @@ html, body {
         font-size: 1.2rem;
     }
     
-    .skills-section {
+    /* .skills-section {
         display: none;
-    }
+    } */
     
     .header-section {
         flex-direction: column;

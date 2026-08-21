@@ -1,0 +1,47 @@
+---
+import { skillCategories } from "../data/skills";
+---
+
+<div class="skills-section">
+  <h3 class="section-title">Habilidades</h3>
+  <div class="skill-categories">
+    {
+      skillCategories.map((category) => (
+        <div class="skill-category">
+          <p class="skill-category-title">{category.title}</p>
+
+          {category.skills && (
+            <div class="skill-icons-row">
+              {category.skills.map((skill) => (
+                <img
+                  class={skill.invert ? "skill-icon invert" : "skill-icon"}
+                  src={skill.icon}
+                  alt={skill.label}
+                  title={skill.label}
+                  loading="lazy"
+                />
+              ))}
+            </div>
+          )}
+
+          {category.groups?.map((group) => (
+            <div class="skill-group">
+              <p class="skill-group-label">{group.label}</p>
+              <div class="skill-icons-row">
+                {group.skills.map((skill) => (
+                  <img
+                    class={skill.invert ? "skill-icon invert" : "skill-icon"}
+                    src={skill.icon}
+                    alt={skill.label}
+                    title={skill.label}
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</div>

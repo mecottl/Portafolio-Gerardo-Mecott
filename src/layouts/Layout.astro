@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
-import { skills } from "../data/skills";
-// import { ClientRouter } from 'astro:transitions';  
+import SkillsSection from "../components/SkillsSection.astro";
 
 interface Props {
   title: string;
@@ -14,8 +13,6 @@ const {
   titlepage,
   description = "Portafolio de Gerardo Mecott, desarrollador Full-Stack: proyectos, cursos y experiencia.",
 } = Astro.props;
-// Comparación en minúsculas y sin slash final para que el link activo
-// funcione sin importar cómo esté escrita la ruta (ej: /Portafolio vs /portafolio).
 const currentPath = Astro.url.pathname.toLowerCase().replace(/\/$/, "") || "/";
 
 function isActive(path: string) {
@@ -62,19 +59,7 @@ function isActive(path: string) {
           </ul>
         </div>
 
-        <div class="skills-section">
-          <h3 class="section-title">Habilidades</h3>
-          <ul class="skills-list">
-            {
-              skills.map((skill) => (
-                <li>
-                  <img class="skill-icon" src={skill.icon} alt={skill.label} />
-                  <span>{skill.label}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+        <SkillsSection />
       </aside>
 
       <section class="container container-info">
