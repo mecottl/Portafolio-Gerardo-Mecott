@@ -1,106 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { featuredRepos } from "../data/projects";
+import type { Project } from "../data/projects";
+import { fetchFeaturedRepos, socialPreviewImage } from "../lib/github";
+
+// Esto corre en build time (al hacer `astro build` / al desplegar en Vercel),
+// no en el navegador del visitante. Una sola llamada a la API de GitHub trae
+// los datos de todos los repos marcados como "featured".
+const githubRepos = await fetchFeaturedRepos(featuredRepos.map((f) => f.repo));
+
+const projects: Project[] = featuredRepos.map((entry) => {
+  const repo = githubRepos.get(entry.repo);
+
+  const techFromRepo = repo?.topics?.length
+    ? repo.topics
+    : repo?.language
+      ? [repo.language]
+      : [];
+
+  return {
+    name: entry.name ?? repo?.name ?? entry.repo,
+    description:
+      entry.description ?? repo?.description ?? "Sin descripción disponible en GitHub.",
+    demoUrl: entry.demoUrl ?? repo?.homepage ?? undefined,
+    githubUrl: repo?.html_url ?? `https://github.com/mecottl/${entry.repo}`,
+    image: entry.image ?? (repo ? socialPreviewImage(repo.name) : undefined),
+    tech: entry.tech ?? techFromRepo,
+  };
+});
 ---
 
 <Layout title="Proyectos - Gerardo Mecott" titlepage="Portafolio">
   <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-image">
-        <img src="/mayaclean.png?height=200&width=300" alt="Mayaclean" />
-        <div class="project-overlay">
-          <div class="project-links">
-            <a href="https://mayaclean.vercel.app" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-            <a href="https://github.com/mecottl/MAYACLEANPOS" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="project-content">
-        <h3>Mayaclean</h3>
-        <p>Servicio POS para lavandería Mayaclean</p>
-        <div class="project-tech">
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">PostgreSQL</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">
-        <img src="/NoteFlow.png?height=200&width=300" alt="NoteFlow" />
-        <div class="project-overlay">
-          <div class="project-links">
-            <a href="https://noteflow3.vercel.app" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-            <a href="https://github.com/mecottl/NoteFlow2" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="project-content">
-        <h3>NoteFlow</h3>
-        <p>Bloc de Notas con generación de texto por contexto de IA</p>
-        <div class="project-tech">
-          <span class="tech-tag">Node.js</span>
-          <span class="tech-tag">PostgreSQL</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">
-        <img src="/recurstack.png?height=200&width=300" alt="RecurStack" />
-        <div class="project-overlay">
-          <div class="project-links">
-            <a href="https://recurstack.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-            <a href="https://github.com/mecottl/RecurStack" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="project-content">
-        <h3>RecurStack</h3>
-        <p>Biblioteca de recursos para desarrolladores Full Stack</p>
-        <div class="project-tech">
-          <span class="tech-tag">Astro</span>
-          <span class="tech-tag">PostgreSQL</span>
-        </div>
-      </div>
-    </div>
-		
-    <div class="project-card">
-      <div class="project-image">
-        <img src="/corazonlisto.png?height=200&width=300" alt="CorazonListo" />
-        <div class="project-overlay">
-          <div class="project-links">
-            <a href="https://corazonlisto.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-            <a href="https://github.com/mecottl/corazonlisto" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="project-content">
-        <h3>Corazon Listo</h3>
-        <p>Encuesta psicológica para saber si una persona está lista para una relación</p>
-        <div class="project-tech">
-          <span class="tech-tag">React</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">
-        <img src="/?height=200&width=300" alt="Trazo" />
-        <div class="project-overlay">
-          <div class="project-links">
-            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-            <a href="https://github.com/mecottl/trazo" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="project-content">
-        <h3>TrazoCV</h3>
-        <p>Generador de CV mediante IA</p>
-        <div class="project-tech">
-          <span class="tech-tag">NodeJs</span>
-          <span class="tech-tag">JavaScript</span>
-        </div>
-      </div>
-    </div>
-
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
 </Layout>

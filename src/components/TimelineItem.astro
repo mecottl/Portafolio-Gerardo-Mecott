@@ -1,0 +1,17 @@
+---
+import type { TimelineEntry } from "../data/profile";
+
+interface Props {
+  entry: TimelineEntry;
+}
+
+const { entry } = Astro.props;
+---
+
+<li class="timeline-item">
+  <div class="timeline-content">
+    <strong>{entry.title}</strong>
+    <span class="date">{entry.dateLabel}</span>
+    <p set:html={entry.description} />
+  </div>
+</li>

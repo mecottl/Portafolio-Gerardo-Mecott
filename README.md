@@ -1,52 +1,55 @@
-# Astro Starter Kit: Basics
+# Portafolio - Gerardo Mecott
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Sitio personal hecho con [Astro](https://astro.build).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Estructura del proyecto
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── public/               # Imágenes estáticas (proyectos, avatar, favicon)
+├── src/
+│   ├── components/       # Componentes reutilizables (tarjetas, items)
+│   │   ├── ProjectCard.astro
+│   │   ├── CourseItem.astro
+│   │   └── TimelineItem.astro
+│   ├── data/              # ← AQUÍ SE EDITA EL CONTENIDO
+│   │   ├── projects.ts    # Proyectos del portafolio
+│   │   ├── courses.ts     # Cursos, agrupados por categoría
+│   │   └── profile.ts     # Experiencia, educación, bio, concursos
+│   ├── layouts/
+│   │   └── Layout.astro   # Estructura común (sidebar, nav, head)
+│   ├── pages/
+│   │   ├── index.astro       # /
+│   │   ├── Portafolio.astro  # /Portafolio
+│   │   ├── Cursos.astro      # /Cursos
+│   │   └── Contacto.astro    # /Contacto
+│   └── styles/
+│       └── global.css
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## ✏️ Cómo agregar contenido nuevo
 
-## 🧞 Commands
+**No es necesario tocar HTML.** Todo el contenido vive en `src/data/`:
 
-All commands are run from the root of the project, from a terminal:
+- **Nuevo proyecto** → agrega un objeto al arreglo `projects` en `src/data/projects.ts`. Si tienes una captura de pantalla, colócala en `public/` y referencia su ruta (ej. `"/mi-proyecto.png"`); si no, se muestra un placeholder automáticamente.
+- **Nuevo curso** → agrega un objeto dentro de la categoría correspondiente en `src/data/courses.ts` (o crea una categoría nueva).
+- **Nueva experiencia laboral, estudio o concurso** → agrega un objeto al arreglo correspondiente (`experience`, `education` o `hackathons`) en `src/data/profile.ts`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+Cada archivo de datos tiene comentarios explicando el formato esperado.
 
-## 👀 Want to learn more?
+## 🧞 Comandos
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Todos los comandos se ejecutan desde la raíz del proyecto:
+
+| Comando           | Acción                                           |
+| :----------------- | :----------------------------------------------- |
+| `pnpm install`      | Instala las dependencias                          |
+| `pnpm dev`          | Levanta el servidor local en `localhost:4321`     |
+| `pnpm build`        | Genera el sitio de producción en `./dist/`        |
+| `pnpm preview`      | Previsualiza el build de producción localmente    |
+
+## 📌 Pendientes conocidos
+
+- Reemplazar el enlace `#` de LinkedIn en `Contacto.astro` por la URL real.
+- Los íconos de la sección "Habilidades" (en `Layout.astro`) están enlazados a imágenes externas de terceros; conviene descargarlos y servirlos desde `public/` para evitar que se rompan.

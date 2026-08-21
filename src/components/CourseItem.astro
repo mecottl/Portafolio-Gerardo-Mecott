@@ -1,0 +1,26 @@
+---
+import type { Course } from "../data/courses";
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+const statusLabel = course.status === "completed" ? "Finalizado" : "En curso";
+---
+
+<div class="course-item">
+  <div class="course-icon">
+    <i class={course.icon} />
+  </div>
+  <div class="course-content">
+    <h4>{course.title}</h4>
+    <p class="course-provider">{course.provider}</p>
+    <p class="course-description">{course.description}</p>
+    <div class="course-meta">
+      <span class="course-duration">{course.duration}</span>
+      <span class="course-date">{course.dateLabel}</span>
+      <span class={`course-status ${course.status}`}>{statusLabel}</span>
+    </div>
+  </div>
+</div>
