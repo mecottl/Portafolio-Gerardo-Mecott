@@ -6,7 +6,7 @@ export interface TimelineEntry {
 
 export const experience: TimelineEntry[] = [
   {
-    title: "Desarrollador Full-Stack Junior — PlenumSoft",
+    title: "Desarrollador Full-Stack Junior - PlenumSoft",
     dateLabel: "2025 - 2027",
     description:
       "Curso mi último año de la carrera dentro de PlenumSoft, desarrollando aplicaciones web con todo tipo de frameworks y tecnologías, colaborando en proyectos reales como parte de mi formación profesional.",
